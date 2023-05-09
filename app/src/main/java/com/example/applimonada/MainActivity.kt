@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -51,22 +52,28 @@ class MainActivity : ComponentActivity() {
 @Preview
 @Composable
 fun Redondolimao() {
+   var espremer by remember { mutableStateOf(1) }
 
-   var tela by remember { mutableStateOf(value = 1) }
+   var tela by remember { mutableStateOf(1) }
 
-    when(tela) {
+    when (tela) {
         1 ->  Conteudolimao(
             R.string.limoeiro,
             R.drawable.limoeiro,
             onImageClick = {
                 tela = 2
+                espremer = (2..4).random()
             }
         )
         2 ->  Conteudolimao(
             R.string.limao,
             R.drawable.limonada,
             onImageClick = {
+                if (espremer>1)
+                    espremer--
+                else
                 tela = 3
+
             }
         )
         3 ->  Conteudolimao(
@@ -74,19 +81,22 @@ fun Redondolimao() {
             R.drawable.copo_limonada,
                 onImageClick = {
                     tela = 4
-                }
+            }
         )
         4 ->  Conteudolimao(
             R.string.copo_vazio,
             R.drawable.reiniciar,
                     onImageClick = {
                         tela = 1
-                    }
+            }
         )
     }
 }
 @Composable
-fun Conteudolimao(recursoTextoId: Int, recursoImageId: Int, onImageClick:()->Unit){
+fun Conteudolimao(recursoTextoId: Int,
+                  recursoImageId: Int,
+                  onImageClick:()->Unit)
+{
 
     Column(
         verticalArrangement = Arrangement.Center,
@@ -108,9 +118,13 @@ fun Conteudolimao(recursoTextoId: Int, recursoImageId: Int, onImageClick:()->Uni
                     BorderStroke(2.dp, Color.Cyan),
                     RoundedCornerShape(15.dp)
                 )
-                .clickable(onClick =onImageClick)
+                .clickable(onClick = onImageClick)
         )
+
     }
-}
+    }
+
+
+
 
 
