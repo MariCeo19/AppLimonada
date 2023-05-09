@@ -80,14 +80,14 @@ fun Redondolimao() {
             R.string.copo_de_limonada,
             R.drawable.copo_limonada,
                 onImageClick = {
-                    tela = 4
+                tela = 4
             }
         )
         4 ->  Conteudolimao(
             R.string.copo_vazio,
             R.drawable.reiniciar,
                     onImageClick = {
-                        tela = 1
+                    tela = 1
             }
         )
     }
@@ -104,15 +104,15 @@ fun Conteudolimao(recursoTextoId: Int,
         modifier = Modifier.fillMaxSize()
     ) {
         Text(
-            text = stringResource(recursoTextoId),
-            fontSize = 20.sp,
-            modifier = Modifier.padding(bottom = 15.dp)
+        text = stringResource(recursoTextoId),
+        fontSize = 20.sp,
+        modifier = Modifier.padding(bottom = 15.dp)
         )
 
         Image(
-            painter = painterResource(id = recursoImageId),
-            contentDescription = null,
-            modifier = Modifier
+        painter = painterResource(id = recursoImageId),
+        contentDescription = null,
+        modifier = Modifier
                 .size(300.dp)
                 .border(
                     BorderStroke(2.dp, Color.Cyan),
